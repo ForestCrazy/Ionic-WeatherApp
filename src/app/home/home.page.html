@@ -1,20 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div class='App {{weatherClass}}'>
+        <div class='main'>
+            <div class='search-container'>
+                <ion-input placeholder='Search Province...' class='search-container-input' (keyup.enter)="onEnter()" [(ngModel)]='query'></ion-input>
+            </div>
+            <div class='location-container' *ngIf="isObj(weather)">
+                <div class='location'>
+                    {{weather.name}} {{weather.sys.country}}
+                </div>
+                <div class='date'>
+                    {{weather.date}}
+                </div>
+            </div>
+            <div class='weather-container' *ngIf="isObj(weather)">
+                <div class='temperature'>
+                    {{weather.main.temp}}°C
+                </div>
+                <div class='weather'>
+                    {{weather.weather[0].main}}
+                </div>
+            </div>
+        </div>
+    </div>
 </ion-content>
